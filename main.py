@@ -2,27 +2,14 @@ import random
 
 # I am creating a hangman project
 
-hangman_art = {0: ("   ",
-                   "   ",
-                   "   "),
-               1: (" o ",
-                   "   ",
-                   "   "),
-               2: (" o ",
-                   " | ",
-                   "   "),
-               3: (" o ",
-                   "/| ",
-                   "   "),
-               4: (" o ",
-                   "/|\\",
-                   "   "),
-               5: (" o ",
-                   "/|\\",
-                   "/  "),
-               6: (" o ",
-                   "/|\\",
-                   "/ \\")}
+hangman_art = {
+    0: ("   ", "   ", "   "),
+    1: (" o ", "   ", "   "),
+    2: (" o ", " | ", "   "),
+    3: (" o ", "/| ", "   "),
+    4: (" o ", "/|\\", "   "),
+    5: (" o ", "/|\\", "/  "),
+    6: (" o ", "/|\\", "/ \\")}
 
 my_list = ["Avatar", "Gravity", "Ironman",
            "Intersteller", "Titanic", "Barbie", "Wonka"]
@@ -44,7 +31,7 @@ def display_answer(answer):
 
 
 def main():
-    answer = random.choice(my_list)
+    answer = random.choice(my_list).lower()
     hint = ["_"] * len(answer)
     wrong_guesses = 0
     guessed_letters = set()
@@ -74,12 +61,12 @@ def main():
 
         if "_" not in hint:
             display_man(wrong_guesses)
-            display_answer(answer)
+            display_answer(answer.upper())
             print("YOU WIN!")
             is_running = False
         elif wrong_guesses >= len(hangman_art) - 1:
             display_man(wrong_guesses)
-            display_answer(answer)
+            display_answer(answer.upper())
             print("YOU LOSE!")
             is_running = False
 
